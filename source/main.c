@@ -30,12 +30,13 @@ int main() {
     while(1) {
         swiWaitForVBlank();
 		scanKeys();
-
         if (keysDown()) {
             set_pos(cptr);
+            if (!get_node(cptr->position, head)) {
+                undo_pos(cptr);
+            }
             output_list(head);
         }
-
     }
 
     return 0;

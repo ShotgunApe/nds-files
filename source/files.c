@@ -50,6 +50,16 @@ Node* create_node(u8 id, char *name) {
     return node;
 }
 
+bool get_node(u8 id, Node* head) {
+    while (head) {
+        if (id == head->id) {
+            return true;
+        }
+        head = head->next;
+    }
+    return false;
+}
+
 void free_node(Node* node) {
     if(node){
         if(node->name){
@@ -73,7 +83,7 @@ void add_node(Node** head, Node* node) {
 }
 
 void output_list(Node* node) {
-    while(node){
+    while(node) {
         iprintf("\x1b[%d;%dH%s", node->id, 2, node->name);
         node = node->next;
     }
