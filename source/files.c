@@ -10,7 +10,7 @@
 void load_filesystem() {
     DIR *pdir;
 	struct dirent *pent;
-    u16 y = 0;
+    //u16 y = 0;
 
     pdir=opendir("/");
 
@@ -20,12 +20,12 @@ void load_filesystem() {
 	        	continue;
 
 	    	if(pent->d_type == DT_DIR) {
-                iprintf("[\x1b[%d;%dH%s]\n", y, 2, pent->d_name);
-                y++;
+                //iprintf("[\x1b[%d;%dH%s]\n", y, 2, pent->d_name);
+                //y++;
             }
 	    	else {
-	        	iprintf("\x1b[%d;%dH%s\n", y, 2, pent->d_name);
-                y++;
+	        	//iprintf("\x1b[%d;%dH%s\n", y, 2, pent->d_name);
+                //y++;
             }
 		}
 		closedir(pdir);
