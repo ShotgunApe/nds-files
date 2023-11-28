@@ -13,23 +13,19 @@ int main() {
     //Sets the console to use sub display, VRAM_C, and BG0 and enables MODE_0_2D on the sub display. Init fat filesystem.
     consoleDemoInit();
     
-
     //cursor
     iprintf("\x1b[%d;%dH*\n", 0, 0);
     Cursor cursor;
     cursor.position = 0;
     cursor.select = false;
     Cursor *cptr;
-
     cptr = &cursor;
 
     //filesystem
-    if(fatInitDefault()) {
-        load_filesystem();
-    }
-    else {
-        iprintf("fatInitDefault failure: terminating\n");
-    }
+    fatInitDefault();
+    Node *head = NULL;
+    head = load_filesystem(head);
+    output_list(head);
 
     while(1) {
         swiWaitForVBlank();
@@ -37,6 +33,7 @@ int main() {
 
         if (keysDown()) {
             set_pos(cptr);
+            output_list(head);
         }
 
     }

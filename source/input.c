@@ -1,4 +1,5 @@
 #include "input.h"
+#include "files.h"
 
 #include <nds.h>
 
