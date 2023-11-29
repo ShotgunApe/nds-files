@@ -10,8 +10,9 @@
 
 int main() {
 
-    //Sets the console to use sub display, VRAM_C, and BG0 and enables MODE_0_2D on the sub display. Init fat filesystem.
+    //Sets the console to use sub display, VRAM_C, and BG0 and enables MODE_0_2D on the sub display.
     consoleDemoInit();
+    bool running = true;
     
     //cursor
     iprintf("\x1b[%d;%dH*\n", 0, 0);
@@ -27,10 +28,15 @@ int main() {
     head = load_filesystem(head);
     output_list(head);
 
-    while(1) {
+    while(running) {
         swiWaitForVBlank();
 		scanKeys();
         if (keysDown()) {
+            if (keysDown() & KEY_START) {
+                free_all(head);
+                head = NULL;
+                running = false;
+            }
             set_pos(cptr);
             if (!get_node(cptr->position, head)) {
                 undo_pos(cptr);

@@ -61,11 +61,18 @@ bool get_node(u8 id, Node* head) {
 }
 
 void free_node(Node* node) {
-    if(node){
+    if(node) {
         if(node->name){
             free(node->name);
         }
         free(node);
+    }
+}
+
+void free_all(Node* node) {
+    while(node) {
+        free_node(node);
+        node = node->next;
     }
 }
 
