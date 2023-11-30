@@ -11,6 +11,9 @@
 
 int main() {
 
+    videoSetMode(MODE_0_2D);
+	videoSetModeSub(MODE_0_2D);
+    
     //Sets the console to use sub display, VRAM_C, and BG0 and enables MODE_0_2D on the sub display.
     consoleDemoInit();
     bool running = true;
