@@ -3,6 +3,7 @@
 
 #include "files.h"
 #include "input.h"
+#include "ui.h"
 
 #include <stdio.h>
 #include <stdbool.h>

@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <string.h>
 #include <dirent.h>
 
@@ -91,7 +92,7 @@ void add_node(Node** head, Node* node) {
 
 void output_list(Node* node) {
     while(node) {
-        iprintf("\x1b[%d;%dH%s", node->id, 2, node->name);
+        iprintf("\x1b[%d;%dH%.30s", node->id, 2, node->name);
         node = node->next;
     }
 }
