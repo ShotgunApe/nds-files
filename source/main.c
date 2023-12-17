@@ -29,7 +29,7 @@ int main() {
     //filesystem
     fatInitDefault();
     Node *head = NULL;
-    head = load_filesystem(head);
+    head = load_filesystem(head, "/");
     output_list(head);
 
     while(running) {
